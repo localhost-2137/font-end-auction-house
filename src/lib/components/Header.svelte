@@ -1,5 +1,5 @@
 <script>
-    import Button from "./Button.svelte";
+    import Button from './Button.svelte';
     import { page } from '$app/stores';
 </script>
 
@@ -14,6 +14,9 @@
             <img src="../../graphics/Businessman 4.png" alt="userPhoto">
         </a>
     </div>
+    <a href="/login">
+        <Button>Login</Button>
+    </a>
     <Button inverse>Logout</Button>
 </header>
 

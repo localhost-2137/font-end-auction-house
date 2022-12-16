@@ -1,5 +1,5 @@
 <script>
-	import Button from '../shared/Button.svelte';
+	import Button from "../../lib/components/Button.svelte";
 </script>
 
 <div class="container">
@@ -8,12 +8,13 @@
 		<form>
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" id="last" />
-
-			<Button>Login</Button>
+			<Button full>Login</Button>
 		</form>
-		<Button inverse>Register</Button>
+		<Button inverse full>Register</Button>
 	</div>
-	<img src="/public/login-bg.svg" alt="" />
+	<a href="/profile">
+		<img src="/public/login-bg.svg" alt="userPhoto" />
+	</a>
 </div>
 
 <style>
@@ -23,20 +24,19 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: row;
 	}
 
-	form {
+	div, form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 300px;
 		margin-bottom: 20px;
 	}
 
 	h3 {
 		text-align: center;
 		font-size: 2rem;
-		margin-bottom: 70px;
 	}
 
 	input {

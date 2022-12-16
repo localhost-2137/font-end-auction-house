@@ -1,9 +1,10 @@
 <script>
-    export let type = "primary"
-    export let inverse = false
+    export let type = "primary";
+    export let inverse = false;
+    export let full = false;
 </script>
 
-<button class={type} class:inverse={inverse}>
+<button class={type} class:inverse={inverse} class:full={full}>
     <slot></slot>
 </button>
 
@@ -12,10 +13,13 @@
         appearance: none;
         padding: 8px 12px;
         font-size: 1.4rem;
-        margin-right: 50px;
         border-radius: 4px;
         min-width: 150px;
         outline: none;
+    }
+
+    .full {
+        width: 100%;
     }
 
     .primary {
