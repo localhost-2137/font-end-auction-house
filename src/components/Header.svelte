@@ -4,13 +4,15 @@
 </script>
 
 <header>
-    <h1>Auction Site</h1>
+    <a href="/auctions"><h1>Auction Site</h1></a>
     <div class="nav">
     <nav>
         <a href="/auctions" class={$page.route.id == "/auctions" ? "active" : ""}>Auctions</a>
         <a href="/auctionsILike" class={$page.route.id == "/auctionsILike" ? "active" : ""}>Auctions I like</a>
     </nav>
-    <img src="../../graphics/Businessman 4.png" alt="photo">
+        <a href="/profile">
+            <img src="../../graphics/Businessman 4.png" alt="userPhoto">
+        </a>
     </div>
     <Button inverse>Logout</Button>
 </header>
