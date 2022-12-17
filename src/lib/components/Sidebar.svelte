@@ -141,7 +141,7 @@
 
 <style>
 	.sidebar {
-		position: relative;
+		position: sticky;
 		width: 250px;
 		text-align: center;
 		background-color: transparent;

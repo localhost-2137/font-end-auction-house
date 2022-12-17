@@ -25,7 +25,8 @@
     </nav>
         {#if $user}
             <a href={`/profile/${$user.data.username}`}>
-                <img src="../../graphics/Businessman 4.png" alt="userPhoto">
+                <img src="/graphics/hłopeksesiedzi.svg" alt="userPhoto">
+                <p>{$user.data.username}</p>
             </a>
         {/if}
     </div>
@@ -86,6 +87,10 @@
         font-size: 24px;
         color: var(--add2-300);
         text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
     }
 
     .active {
@@ -94,6 +99,7 @@
 
     img {
         filter : drop-shadow(0 4px 4px rgb(0, 0, 0, .25));
+        height: 32px;
     }
 
 </style>
