@@ -6,9 +6,17 @@
 	let item;
 	let person;
 	let amount;
+	let beds;
 
 	console.log($page);
 	fetch(`${apiUrl}/listings/${$page.params.id}`)
+		.then((x) => x.json())
+		.then((data) => {
+			item = data;
+			console.log(item);
+		});
+
+	fetch(`${apiUrl}/listings/bids/${item.id}`)
 		.then((x) => x.json())
 		.then((data) => {
 			item = data;
@@ -41,6 +49,12 @@
 		</div>
 
 		<p class="desc">{item.description}</p>
+
+		<ul>
+			{#each bids as bid}
+				<li />
+			{/each}
+		</ul>
 	{/if}
 </div>
 
