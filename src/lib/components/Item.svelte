@@ -18,26 +18,25 @@
 	};
 </script>
 
-<a href="/product">
-	<div class="container">
-		<img src="/graphics/Businessman 4.png" alt="" />
-		<div class="desc">
-			<h3>{product.name}</h3>
+<div class="container">
+	<img src="/graphics/Businessman 4.png" alt="" />
+	<div class="desc">
+		<h3>{product.name}</h3>
 
-			<div class={!product.is_auction ? 'hidden' : 'row'}>
-				<p>Current bid: {product.top_bid}$</p>
-				<Button>Bid</Button>
-			</div>
-			<div class="row">
-				<p>Buy now price: {product.price}$</p>
-				<Button inverse>Buy</Button>
-			</div>
-			<p class="author">
-				Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a>
-			</p>
+		<div class={!product.is_auction ? 'hidden' : 'row'}>
+			<p>Current bid: {product.top_bid}$</p>
+			<Button>Bid</Button>
 		</div>
+		<div class="row">
+			<p>Buy now price: {product.price}$</p>
+			<Button inverse>Buy</Button>
+		</div>
+		<a class="details" href="/product/{product.id}">Details</a>
+		<p class="author">
+			Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a>
+		</p>
 	</div>
-</a>
+</div>
 
 <style>
 	.hidden {
@@ -98,5 +97,15 @@
 
 	.primary {
 		color: var(--acc-500);
+	}
+
+	.details {
+		width: 100%;
+		font-size: 14px;
+		text-decoration: none;
+	}
+
+	.details:visited {
+		color: inherit;
 	}
 </style>
