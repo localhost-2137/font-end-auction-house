@@ -44,7 +44,7 @@
 </script>
 
 <div class="container">
-	<img src="/static/graphics/add-offer-bg.svg" alt="" />
+	<img src="/graphics/add-offer-bg.svg" alt="" />
 	<div class="form">
 		<h3>Add an offer</h3>
 		<form on:submit|preventDefault={AddItem}>
@@ -69,7 +69,8 @@
 		margin-top: 100px;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-end;
+		gap: 64px;
 	}
 
 	.form {
@@ -129,5 +130,9 @@
 	textarea:focus,
 	textarea:active {
 		outline: none;
+	}
+
+	img {
+		width: 500px;
 	}
 </style>

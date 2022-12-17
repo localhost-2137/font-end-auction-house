@@ -25,7 +25,7 @@
 <div class="container">
 	<div class="profile">
 		<div class="photo">
-			<img src="/graphics/Businessman 4.png" alt="" />
+			<img src="/graphics/hłopeksesiedzi.svg" alt="profilePicture" />
 		</div>
 		<div class="desc">
 			<h2>{$page.params.username}</h2>
@@ -33,7 +33,7 @@
 				{firstname} {lastname}
 			</p>
 			<p>
-				Created At: {new Date(created_at * 1000).toLocaleString()}
+				Joined At: {new Date(created_at * 1000).toLocaleString()}
 			</p>
 		</div>
 	</div>
@@ -53,7 +53,6 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
 		max-width: 900px;
 		margin: 50px auto 0 auto;
 	}
@@ -64,6 +63,12 @@
 		flex-direction: column;
 		padding: 32px 0;
 	}
+    .desc {
+        display: flex;
+        flex-direction: column;
+        padding: 32px 0;
+		font-size: 32px;
+    }
 
 	.profile {
 		display: flex;
@@ -85,10 +90,6 @@
 	a {
 		color: inherit;
 		text-decoration: none;
-	}
-
-	.btn {
-		width: 250px;
 	}
 
 	.offer {
@@ -115,5 +116,14 @@
 
 	.offer-btn {
 		margin-left: 20px;
+	}
+
+	.desc p:first-of-type {
+		font-size: 36px;
+	}
+
+	h2 {
+		margin-block-start: 0;
+    	margin-block-end: 0;
 	}
 </style>

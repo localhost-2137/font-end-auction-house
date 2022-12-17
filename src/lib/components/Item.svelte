@@ -95,6 +95,17 @@
 		align-items: center;
 		gap: 32px;
 		margin-bottom: 100px;
+		position: relative;
+	}
+
+	.container::after{
+		content: "";
+        width: 80%;
+        height: 1px;
+        background-color: #BFB7B5;
+        position: absolute;
+        bottom: -5%;
+        left: 10%;
 	}
 
 	.container p {
