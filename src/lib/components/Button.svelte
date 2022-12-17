@@ -9,21 +9,6 @@
 </button>
 
 <style>
-<<<<<<< HEAD
-	button {
-		appearance: none;
-		padding: 8px 12px;
-		font-size: 16px;
-		border-radius: 4px;
-		min-width: 150px;
-		width: fit-content;
-		outline: none;
-	}
-
-	.full {
-		width: 100%;
-	}
-=======
     button {
         appearance: none;
         padding: 8px 12px;
@@ -37,7 +22,6 @@
     .full {
         width: 316px;
     }
->>>>>>> cc9dcb8 (almost registration)
 
 	.primary {
 		color: #fff;

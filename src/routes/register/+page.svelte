@@ -1,36 +1,4 @@
 <script>
-<<<<<<< HEAD
-	import Button from '../../lib/components/Button.svelte';
-</script>
-
-<div class="container">
-	<div>
-		<h3>Register</h3>
-		<form>
-			<input type="text" placeholder="Full Name" />
-			<input type="text" placeholder="User Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<input type="password" placeholder="Reapeat Password" id="last" />
-
-			<Button>Next</Button>
-		</form>
-	</div>
-	<img src="/public/register-bg.svg" alt="" />
-</div>
-
-<style>
-	.container {
-		width: 100vw;
-		margin-top: 150px;
-		margin-right: 150px;
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: center;
-		align-items: center;
-	}
-
-=======
 	import Button from "../../lib/components/Button.svelte";
 
     let firstPart = true;
@@ -134,21 +102,10 @@ function showPosition(position) {
         outline: none;
     }
     
->>>>>>> cc9dcb8 (almost registration)
 	form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-<<<<<<< HEAD
-		width: 300px;
-		margin-bottom: 20px;
-	}
-
-	h3 {
-		text-align: center;
-		font-size: 2rem;
-		margin-bottom: 70px;
-=======
 		justify-content: space-between;
         gap: 64px;
 	}
@@ -168,7 +125,7 @@ function showPosition(position) {
 	h3 {
 		text-align: center;
 		font-size: 2rem;
->>>>>>> cc9dcb8 (almost registration)
+
 	}
 
 	input {
@@ -178,18 +135,10 @@ function showPosition(position) {
 		border-radius: 4px;
 		font-size: 1.6rem;
 		padding: 8px;
-<<<<<<< HEAD
-		margin: 10px 0;
-	}
-
-	#last {
-		margin-bottom: 20px;
-=======
 	}
 
 	img {
 		width: 500px;
->>>>>>> cc9dcb8 (almost registration)
 		object-fit: cover;
 	}
 </style>
