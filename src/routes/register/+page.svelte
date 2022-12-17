@@ -8,7 +8,8 @@
   let locationLon;
   let locationLat;
 
-  let fullname = "";
+  let firstname = "";
+  let lastname = "";
   let username = "";
   let email = "";
   let password = "";
@@ -36,8 +37,8 @@
       body: JSON.stringify({
         username: username,
         email: email,
-        firstname: fullname.split(' ')[0],
-        lastname: fullname.split(' ')[1],
+        firstname: firstname,
+        lastname: lastname,
         password: password,
         localization: {
           lon: locationLon,
@@ -104,7 +105,8 @@
 		<form>
 			<h3>Register</h3>
 			<div class="inputs">
-				<input type="text" bind:value={fullname} placeholder="Full Name" />
+				<input type="text" bind:value={firstname} placeholder="First Name" />
+				<input type="text" bind:value={lastname} placeholder="Last Name" />
 				<input type="text" bind:value={username} placeholder="User Name" />
 				<input type="email" bind:value={email} placeholder="Email" />
 				<input type="password" bind:value={password} placeholder="Password" />
