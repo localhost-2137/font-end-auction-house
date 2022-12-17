@@ -1,5 +1,10 @@
 <script>
 	import Sidebar from '../../lib/components/Sidebar.svelte';
+	import Item from '../../lib/components/Item.svelte';
+
+	const URL = '';
+
+	fetch(URL);
 </script>
 
 <Sidebar />

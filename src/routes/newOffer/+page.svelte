@@ -1,4 +1,5 @@
 <script>
+	import Button from '../../lib/components/Button.svelte';
 </script>
 
 <div class="container">
@@ -18,6 +19,7 @@
 				<input class="price-input" type="number" placeholder="Buy now price" />
 			</div>
 			<textarea name="desc" id="desc" cols="30" rows="10" placeholder="Add description..." />
+			<Button>Add new offer</Button>
 		</form>
 	</div>
 </div>
