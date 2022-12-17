@@ -20,7 +20,7 @@
   let qrCodeUrl = "";
 
   async function Register(){
-    if(!fullname || !username || !email || !password || !confirmPassword) {
+    if(!firstname || !lastname || !username || !email || !password || !confirmPassword) {
       alert("INPUTS ARE EMPTY");
       return;
     }
