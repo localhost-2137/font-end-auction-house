@@ -1,0 +1,15 @@
+{
+	"name": "How Expensive",
+	"short_name": "H.E.",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"display": "standalone",
+	"description": "Auction app",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "/favicon.png",
+			"sizes": "512x512"
+		}
+	]
+}
