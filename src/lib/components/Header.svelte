@@ -2,6 +2,18 @@
     import Button from './Button.svelte';
     import { page } from '$app/stores';
     import { user } from "$lib/stores.js";
+
+    function setCookie(cname, cvalue, exdays) {
+		const d = new Date();
+		d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+		let expires = 'expires=' + d.toUTCString();
+		document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+	}
+
+    async function Logout(){
+        setCookie("jwt", "", -1);
+        window.location.reload();
+    }
 </script>
 
 <header>
@@ -21,7 +33,7 @@
     </a>
     {/if}
     {#if $user}
-    <Button inverse>Logout</Button>
+        <a on:click={Logout}><Button inverse>Logout</Button></a>
     {/if}
 </header>
 
