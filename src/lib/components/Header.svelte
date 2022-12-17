@@ -35,6 +35,8 @@
     </a>
     {/if}
     {#if $user}
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <a on:click={Logout}><Button inverse>Logout</Button></a>
     {/if}
 </header>
@@ -82,7 +84,7 @@
 
     a {
         font-size: 24px;
-        color: var(--add2-200);
+        color: var(--add2-300);
         text-decoration: none;
     }
 

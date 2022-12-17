@@ -4,6 +4,7 @@
 	import { tokenJwt } from '$lib/stores.js';
 
 	let name = "";
+	let imageUrl = "";
 	let description = "";
 	let bidChecked = false;
 	let bidPrice = 0;
@@ -25,7 +26,8 @@
 				category: category,
 				isAuction: bidChecked,
 				bidPrice: bidPrice,
-				price: buyPrice
+				price: buyPrice,
+				image_link: imageUrl
 			})
 		})
 		.then(async (x) =>{
@@ -47,6 +49,7 @@
 		<h3>Add an offer</h3>
 		<form on:submit|preventDefault={AddItem}>
 			<input type="text" bind:value={name} placeholder="Product name" />
+			<input type="text" bind:value={imageUrl} placeholder="Image URL" />
 			<div class="input-field">
 				<input type="checkbox" bind:checked={bidChecked} name="auction" id="auction" />
 				<label for="auction">Auction</label>
