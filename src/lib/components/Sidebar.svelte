@@ -1,4 +1,18 @@
 <script>
+	import { createEventDispatcher } from 'svelte/internal';
+
+	let dispatcher = createEventDispatcher();
+	let filters = {
+		search: '',
+		minPrice: 0,
+		maxPrice: 0,
+		minBet: 0,
+		maxBet: 0,
+		time: 0,
+		buyNow: false,
+		auction: false,
+		cat: -1
+	};
 </script>
 
 <div class="sidebar">
@@ -7,44 +21,114 @@
 	<form>
 		<div class="input-field">
 			<label for="search">Search</label>
-			<input type="search" id="search" placeholder="Search" />
+			<input
+				type="search"
+				id="search"
+				placeholder="Search"
+				bind:value={filters.search}
+				on:change|preventDefault={() => {
+					dispatcher('handleFilters', filters);
+				}}
+			/>
 		</div>
 		<div class="input-field">
 			<label>Buy price</label>
 			<div class="double-input">
-				<input type="number" id="buy-min-value" placeholder="min" />
-				<input type="number" id="buy-max-value" placeholder="max" />
+				<input
+					type="number"
+					id="buy-min-value"
+					placeholder="min"
+					bind:value={filters.minPrice}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
+				<input
+					type="number"
+					id="buy-max-value"
+					placeholder="max"
+					bind:value={filters.maxPrice}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
 			</div>
 		</div>
 		<div class="input-field">
 			<label>Bid price</label>
 			<div class="double-input">
-				<input type="number" id="bid-min-value" placeholder="min" />
-				<input type="number" id="bid-max-value" placeholder="max" />
+				<input
+					type="number"
+					id="bid-min-value"
+					placeholder="min"
+					bind:value={filters.minBet}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
+				<input
+					type="number"
+					id="bid-max-value"
+					placeholder="max"
+					bind:value={filters.maxBet}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
 			</div>
 		</div>
-		<div class="input-field">
+		<!-- <div class="input-field">
 			<label for="time">Time left</label>
-			<input type="text" id="time" placeholder="Max" />
-		</div>
+			<input
+				type="text"
+				id="time"
+				placeholder="Max"
+				bind:value={filters.time}
+				on:change|preventDefault={() => {
+					dispatcher('handleFilters', filters);
+				}}
+			/>
+		</div> -->
 		<div class="input-field">
 			<label>Sell type</label>
 			<div class="radio-option">
-				<input type="radio" name="sell-type" id="buy" />
+				<input
+					type="radio"
+					name="sell-type"
+					id="buy"
+					bind:value={filters.buyNow}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
 				<label for="buy">Buy Now</label>
 			</div>
 
 			<div class="radio-option">
-				<input type="radio" name="sell-type" id="auction" />
+				<input
+					type="radio"
+					name="sell-type"
+					id="auction"
+					bind:value={filters.auction}
+					on:change|preventDefault={() => {
+						dispatcher('handleFilters', filters);
+					}}
+				/>
 				<label for="auction">Auction</label>
 			</div>
 		</div>
 		<div class="input-field">
 			<label for="category">Category</label>
-			<select id="category">
-				<option default value="none">None</option>
-				<option value="music">Music</option>
-				<option value="agd">AGD</option>
+			<select
+				id="category"
+				bind:value={filters.cat}
+				on:change|preventDefault={() => {
+					dispatcher('handleFilters', filters);
+				}}
+			>
+				<option default value="-1">None</option>
+				<option value="1">Music</option>
+				<option value="2">AGD</option>
 			</select>
 		</div>
 	</form>
