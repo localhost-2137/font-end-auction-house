@@ -1,24 +1,63 @@
 <script>
 	import Button from '../../lib/components/Button.svelte';
+	import { apiUrl } from '../../lib/const';
+	import { tokenJwt } from '$lib/stores.js';
+
+	let name = "";
+	let description = "";
+	let bidChecked = false;
+	let bidPrice = 0;
+	let buyChecked = false;
+	let buyPrice = 0;
+	let category = 1;
+
+
+	async function AddItem() {
+		await fetch(`${apiUrl}/listings`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				"token": $tokenJwt
+			},
+			body: JSON.stringify({
+				name: name,
+				description: description,
+				category: category,
+				isAuction: bidChecked,
+				bidPrice: bidPrice,
+				price: buyPrice
+			})
+		})
+		.then(async (x) =>{
+			if(!x.ok){
+				alert("some error");
+				return;
+			}
+
+			alert("new id: " + await x.text())
+			//redirect for eg.
+			
+		});
+	}
 </script>
 
 <div class="container">
 	<img src="/static/graphics/add-offer-bg.svg" alt="" />
 	<div class="form">
 		<h3>Add an offer</h3>
-		<form>
-			<input type="text" placeholder="Product name" />
+		<form on:submit|preventDefault={AddItem}>
+			<input type="text" bind:value={name} placeholder="Product name" />
 			<div class="input-field">
-				<input type="checkbox" name="auction" id="auction" />
+				<input type="checkbox" bind:checked={bidChecked} name="auction" id="auction" />
 				<label for="auction">Auction</label>
-				<input class="price-input" type="number" placeholder="Starting price" />
+				<input class="price-input" bind:value={bidPrice} type="number" step="any" placeholder="Starting price" />
 			</div>
 			<div class="input-field">
-				<input type="checkbox" name="buy" id="buy" />
+				<input type="checkbox" bind:checked={buyChecked} name="buy" id="buy" />
 				<label for="buy">Buy Now</label>
-				<input class="price-input" type="number" placeholder="Buy now price" />
+				<input class="price-input" bind:value={buyPrice} type="number" step="any" placeholder="Buy now price" />
 			</div>
-			<textarea name="desc" id="desc" cols="30" rows="10" placeholder="Add description..." />
+			<textarea name="desc" id="desc" cols="30" rows="10" bind:value={description} placeholder="Add description..." />
 			<Button>Add new offer</Button>
 		</form>
 	</div>
