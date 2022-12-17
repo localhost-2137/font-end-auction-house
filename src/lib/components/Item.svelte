@@ -73,7 +73,7 @@
 <div class="container">
 	<img src={product.image_link} alt="" />
 	<div class="desc">
-		<h3>{product.name}</h3>
+		<h3><a href="/product/{product.id}">{product.name}</a></h3>
 
 		<div class={!product.is_auction ? 'hidden' : 'row'}>
 			<p>Current bid: {product.top_bid}$</p>
