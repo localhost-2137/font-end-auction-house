@@ -14,12 +14,13 @@
 		localization: {
 			lat: 26.4324,
 			lon: -49.123
-		}
+		},
+		image_link: "/graphics/Businessman 4.png"
 	};
 </script>
 
 <div class="container">
-	<img src="/graphics/Businessman 4.png" alt="" />
+	<img src="{product.image_link}" alt="" />
 	<div class="desc">
 		<h3>{product.name}</h3>
 
