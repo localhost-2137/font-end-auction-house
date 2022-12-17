@@ -22,12 +22,11 @@
 	<img src="/graphics/Businessman 4.png" alt="" />
 	<div class="desc">
 		<h3>{product.name}</h3>
-		{#if product.is_auction}
-			<div class="row">
-				<p>Current bid: {product.top_bid}$</p>
-				<Button>Bid</Button>
-			</div>
-		{/if}
+
+		<div class={!product.is_auction ? 'hidden' : 'row'}>
+			<p>Current bid: {product.top_bid}$</p>
+			<Button>Bid</Button>
+		</div>
 		<div class="row">
 			<p>Buy now price: {product.price}$</p>
 			<Button inverse>Buy</Button>
@@ -37,6 +36,10 @@
 </div>
 
 <style>
+	.hidden {
+		display: none;
+	}
+
 	h3 {
 		text-align: center;
 		font-size: 32px;
@@ -54,6 +57,7 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 32px;
+		margin-bottom: 100px;
 	}
 
 	.container p {

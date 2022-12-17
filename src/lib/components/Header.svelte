@@ -1,23 +1,28 @@
 <script>
     import Button from './Button.svelte';
     import { page } from '$app/stores';
+    import { user } from "$lib/stores.js";
 </script>
 
 <header>
-    <a href="/auctions"><h1>Auction Site</h1></a>
+    <a href="/auctions"><h1>How Expensive</h1></a>
     <div class="nav">
     <nav>
         <a href="/auctions" class={$page.route.id == "/auctions" ? "active" : ""}>Auctions</a>
         <a href="/auctionsILike" class={$page.route.id == "/auctionsILike" ? "active" : ""}>Auctions I like</a>
     </nav>
-        <a href="/profile">
+        <a href={`/profile/${$user}`}>
             <img src="../../graphics/Businessman 4.png" alt="userPhoto">
         </a>
     </div>
+    {#if !$user}
     <a href="/login">
         <Button>Login</Button>
     </a>
+    {/if}
+    {#if $user}
     <Button inverse>Logout</Button>
+    {/if}
 </header>
 
 <style>
