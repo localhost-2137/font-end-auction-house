@@ -22,10 +22,12 @@
 	<img src="/graphics/Businessman 4.png" alt="" />
 	<div class="desc">
 		<h3>{product.name}</h3>
-		<div class="row">
-			<p>Current bid: {product.top_bid}$</p>
-			<Button>Bid</Button>
-		</div>
+		{#if product.is_auction}
+			<div class="row">
+				<p>Current bid: {product.top_bid}$</p>
+				<Button>Bid</Button>
+			</div>
+		{/if}
 		<div class="row">
 			<p>Buy now price: {product.price}$</p>
 			<Button inverse>Buy</Button>
