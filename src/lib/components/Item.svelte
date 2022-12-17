@@ -30,7 +30,7 @@
 			<p>Buy now price: {product.price}$</p>
 			<Button inverse>Buy</Button>
 		</div>
-		<p class="author">Added by <span class="primary">{product.username}</span></p>
+		<p class="author">Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a></p>
 	</div>
 </div>
 
