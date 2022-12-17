@@ -22,7 +22,7 @@
 	<div class="offer">
 		<p>User offers</p>
 		<div class="offer-btn">
-			<Button>Add offer</Button>
+			<Button><a href="/newOffer">Add Offer</a></Button>
 		</div>
 	</div>
 	<Item />
@@ -59,6 +59,11 @@
 	p {
 		font-size: 14px;
 		margin-bottom: 25px;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
 	}
 
 	.btn {
