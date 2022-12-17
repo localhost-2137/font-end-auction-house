@@ -10,10 +10,10 @@
 			<input type="password" placeholder="Password" id="last" />
 			<Button full>Login</Button>
 		</form>
-		<Button inverse full>Register</Button>
+		<a href="../register"><Button inverse full>Register</Button></a>
 	</div>
 	<a href="/profile">
-		<img src="/public/login-bg.svg" alt="userPhoto" />
+		<img src="/graphics/login.svg" alt="userPhoto" />
 	</a>
 </div>
 
@@ -25,6 +25,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: row;
+		gap: 128px;
 	}
 
 	div, form {
@@ -56,6 +57,5 @@
 	img {
 		width: 500px;
 		object-fit: cover;
-		margin-left: 150px;
 	}
 </style>
