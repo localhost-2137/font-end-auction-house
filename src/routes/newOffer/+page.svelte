@@ -36,7 +36,7 @@
 
 			alert("new id: " + await x.text())
 			//redirect for eg.
-			
+
 		});
 	}
 </script>
@@ -50,12 +50,10 @@
 			<div class="input-field">
 				<input type="checkbox" bind:checked={bidChecked} name="auction" id="auction" />
 				<label for="auction">Auction</label>
-				<input class="price-input" bind:value={bidPrice} type="number" step="any" placeholder="Starting price" />
+				<input class="price-input" bind:value={bidPrice} type="number" step="any" disabled={!bidChecked} placeholder="Starting price" />
 			</div>
 			<div class="input-field">
-				<input type="checkbox" bind:checked={buyChecked} name="buy" id="buy" />
-				<label for="buy">Buy Now</label>
-				<input class="price-input" bind:value={buyPrice} type="number" step="any" placeholder="Buy now price" />
+				<input class="price-input" type="number" placeholder="Buy now price" />
 			</div>
 			<textarea name="desc" id="desc" cols="30" rows="10" bind:value={description} placeholder="Add description..." />
 			<Button>Add new offer</Button>
