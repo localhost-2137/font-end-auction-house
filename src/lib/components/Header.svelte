@@ -2,6 +2,18 @@
     import Button from './Button.svelte';
     import { page } from '$app/stores';
     import { user } from "$lib/stores.js";
+
+    function setCookie(cname, cvalue, exdays) {
+		const d = new Date();
+		d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+		let expires = 'expires=' + d.toUTCString();
+		document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+	}
+
+    async function Logout(){
+        setCookie("jwt", "", -1);
+        window.location.reload();
+    }
 </script>
 
 <header>
@@ -11,9 +23,11 @@
         <a href="/auctions" class={$page.route.id == "/auctions" ? "active" : ""}>Auctions</a>
         <a href="/auctionsILike" class={$page.route.id == "/auctionsILike" ? "active" : ""}>Auctions I like</a>
     </nav>
-        <a href={`/profile/${$user}`}>
-            <img src="../../graphics/Businessman 4.png" alt="userPhoto">
-        </a>
+        {#if $user}
+            <a href={`/profile/${$user.data.username}`}>
+                <img src="../../graphics/Businessman 4.png" alt="userPhoto">
+            </a>
+        {/if}
     </div>
     {#if !$user}
     <a href="/login">
@@ -21,7 +35,7 @@
     </a>
     {/if}
     {#if $user}
-    <Button inverse>Logout</Button>
+        <a on:click={Logout}><Button inverse>Logout</Button></a>
     {/if}
 </header>
 

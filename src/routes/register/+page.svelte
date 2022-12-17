@@ -14,6 +14,10 @@
   let password = "";
   let confirmPassword = "";
 
+  let tfaSelected = false;
+
+  let qrCodeUrl = "";
+
   async function Register(){
     if(!fullname || !username || !email || !password || !confirmPassword) {
       alert("INPUTS ARE EMPTY");
@@ -38,16 +42,18 @@
         localization: {
           lon: locationLon,
           lat: locationLat
-        }
+        },
+        tfa: tfaSelected
       })
     })
-    .then(x =>{
+    .then(async (x) =>{
       if(!x.ok) {
         alert("not ok!");
         return;
       }
 
       alert("Verification mail sent!")
+      qrCodeUrl = (await x.json()).qr;
     })
     .catch(e =>{
       console.log(e);
@@ -93,6 +99,13 @@
 	}
 </script>
 
+{#if qrCodeUrl.length > 0}
+  <div style="width:50%; height: 50%; position: absolute; transform: translate(-50%, -50%); right: 50%; top: 50%">
+    <img width="100%" height="100%" src={qrCodeUrl}>
+  </div>
+  <button on:click={() => (qrCodeUrl = "")}>CLOSE</button>
+{/if}
+
 <div class={firstPart ? 'container' : 'hide'}>
 	<div>
 		<form>
@@ -103,6 +116,7 @@
 				<input type="email" bind:value={email} placeholder="Email" />
 				<input type="password" bind:value={password} placeholder="Password" />
 				<input type="password" bind:value={confirmPassword} placeholder="Repeat Password" />
+				<input type="checkbox" bind:value={tfaSelected} placeholder="2fa" />
 			</div>
 			<div class="buttons">
 				<a href="../register" on:click={hide}><Button full>Next</Button></a>

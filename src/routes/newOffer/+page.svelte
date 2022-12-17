@@ -53,7 +53,7 @@
 				<input class="price-input" bind:value={bidPrice} type="number" step="any" disabled={!bidChecked} placeholder="Starting price" />
 			</div>
 			<div class="input-field">
-				<input class="price-input" type="number" placeholder="Buy now price" />
+				<input class="price-input" type="number" step="any" bind:value={buyPrice} placeholder="Buy now price" />
 			</div>
 			<textarea name="desc" id="desc" cols="30" rows="10" bind:value={description} placeholder="Add description..." />
 			<Button>Add new offer</Button>

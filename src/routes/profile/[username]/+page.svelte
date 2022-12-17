@@ -3,8 +3,13 @@
 	import Item from '../../../lib/components/Item.svelte';
     import { page } from '$app/stores';
 	import { apiUrl } from '$lib/const.js';
-    fetch(`${apiUrl}/users/${$page.params.username}`).then((data) => {
-    console.log(data);
+    
+	let items = [];
+
+	fetch(`${apiUrl}/users/${$page.params.username}`)
+	.then(x => x.json())
+	.then((data) => {
+		items = data.data;
     });
 </script>
 
@@ -27,7 +32,10 @@
 			<Button><a href="/newOffer">Add Offer</a></Button>
 		</div>
 	</div>
-	<Item />
+
+	{#each items as item}
+		<Item product={item} />
+	{/each}
 </div>
 
 <style>

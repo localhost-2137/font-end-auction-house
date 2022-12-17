@@ -110,11 +110,5 @@
 	.container {
 		height: 100vh;
 		width: 80%;
-		overflow-y: scroll;
-	}
-
-	.content {
-		display: flex;
-		justify-content: space-between;
 	}
 </style>
