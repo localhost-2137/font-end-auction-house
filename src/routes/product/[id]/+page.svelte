@@ -6,7 +6,7 @@
 	let item;
 	let person;
 	let amount;
-	let beds;
+	let bids;
 
 	console.log($page);
 	fetch(`${apiUrl}/listings/${$page.params.id}`)
@@ -16,12 +16,12 @@
 			console.log(item);
 		});
 
-	fetch(`${apiUrl}/listings/bids/${item.id}`)
-		.then((x) => x.json())
-		.then((data) => {
-			item = data;
-			console.log(item);
-		});
+	// fetch(`${apiUrl}/listings/bids/${item.id}`)
+	// 	.then((x) => x.json())
+	// 	.then((data) => {
+	// 		item = data;
+	// 		console.log(item);
+	// 	});
 
 	// fetch(`${apiUrl}/users/${$page.params.owner_id}`)
 	// 	.then((x) => x.json())
@@ -51,9 +51,9 @@
 		<p class="desc">{item.description}</p>
 
 		<ul>
-			{#each bids as bid}
+			<!-- {#each bids as bid}
 				<li />
-			{/each}
+			{/each} -->
 		</ul>
 	{/if}
 </div>
