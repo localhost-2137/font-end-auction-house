@@ -23,9 +23,11 @@
         <a href="/auctions" class={$page.route.id == "/auctions" ? "active" : ""}>Auctions</a>
         <a href="/auctionsILike" class={$page.route.id == "/auctionsILike" ? "active" : ""}>Auctions I like</a>
     </nav>
-        <a href={`/profile/${$user}`}>
-            <img src="../../graphics/Businessman 4.png" alt="userPhoto">
-        </a>
+        {#if $user}
+            <a href={`/profile/${$user.data.username}`}>
+                <img src="../../graphics/Businessman 4.png" alt="userPhoto">
+            </a>
+        {/if}
     </div>
     {#if !$user}
     <a href="/login">
