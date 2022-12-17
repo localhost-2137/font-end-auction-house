@@ -1,5 +1,8 @@
 <script>
 	import Button from './Button.svelte';
+	import { user, tokenJwt } from '$lib/stores.js';
+	import { apiUrl } from '../const';
+
 	export let product = {
 		firstname: 'Headpones',
 		lastname: 30,
@@ -15,12 +18,36 @@
 			lat: 26.4324,
 			lon: -49.123
 		},
-		image_link: "/graphics/Businessman 4.png"
+		image_link: '/graphics/Businessman 4.png'
 	};
+
+	async function Delete() {
+		await fetch(`${apiUrl}/listings`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				token: $tokenJwt
+			},
+			body: JSON.stringify({
+				listingId: product.id
+			})
+		})
+			.then((x) => {
+				if (!x.ok) {
+					alert('CANNOT DELETE');
+					return;
+				}
+
+				window.location.reload();
+			})
+			.catch((e) => {
+				alert(`ERROR ${e}`);
+			});
+	}
 </script>
 
 <div class="container">
-	<img src="{product.image_link}" alt="" />
+	<img src={product.image_link} alt="" />
 	<div class="desc">
 		<h3>{product.name}</h3>
 
@@ -32,7 +59,15 @@
 			<p>Buy now price: {product.price}$</p>
 			<Button inverse>Buy</Button>
 		</div>
-		<p class="author">Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a></p>
+		{#if $user && product.username == $user.data.username}
+			<div class="row">
+				<p>Remove</p>
+				<a style="background: red" on:click={Delete}><Button inverse>Delete</Button></a>
+			</div>
+		{/if}
+		<p class="author">
+			Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a>
+		</p>
 	</div>
 </div>
 
