@@ -79,15 +79,21 @@
 	};
 </script>
 
-<Sidebar on:handleFilters={handleFilters} />
-
-<div class="container">
-	{#each filtredItems as item}
-		<Item product={item} />
-	{/each}
+<div class="flex">
+	<Sidebar on:handleFilters={handleFilters} />
+	<div class="container">
+		{#each filtredItems as item}
+			<Item product={item} />
+		{/each}
+	</div>
 </div>
 
 <style>
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.container {
 		height: 100vh;
 		width: 80%;
