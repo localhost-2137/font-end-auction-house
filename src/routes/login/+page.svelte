@@ -1,19 +1,19 @@
 <script>
-	import Button from "../../lib/components/Button.svelte";
-	import { apiUrl } from "../../lib/const";
+	import Button from '../../lib/components/Button.svelte';
+	import { apiUrl } from '../../lib/const';
 
-	let email = "";
-	let password = "";
-	let tfa = "";
+	let email = '';
+	let password = '';
+	let tfa = '';
 
 	async function Login() {
-		if(!email || !password) {
-			alert("TODO: Inputs not defined");
+		if (!email || !password) {
+			alert('TODO: Inputs not defined');
 			return;
 		}
 
 		await fetch(`${apiUrl}/users/signin`, {
-			method: "POST",
+			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -23,27 +23,26 @@
 				tfa: tfa
 			})
 		})
-		.then(async (x) =>{
-			if(x.status == 400) {
-				tfa = prompt("Enter 2fa: ");
-				await Login();
-			}
-			else if(x.status == 401){
-				alert("BAD 2FA");
-			}
+			.then(async (x) => {
+				if (x.status == 400) {
+					tfa = prompt('Enter 2fa: ');
+					await Login();
+				} else if (x.status == 401) {
+					alert('BAD 2FA');
+				}
 
-			let jwtData = await x.json();
-			setCookie("jwt", jwtData.token, 365);
+				let jwtData = await x.json();
+				setCookie('jwt', jwtData.token, 365);
 
-			window.location.reload();
-			tfa = "";
-		})
-		.catch((e) =>{
-			console.log(e);
-			alert("some error");
+				window.location.reload();
+				tfa = '';
+			})
+			.catch((e) => {
+				console.log(e);
+				alert('some error');
 
-			tfa = "";
-		});
+				tfa = '';
+			});
 	}
 
 	function setCookie(cname, cvalue, exdays) {
@@ -80,7 +79,8 @@
 		gap: 128px;
 	}
 
-	div, form {
+	div,
+	form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -100,6 +100,11 @@
 		font-size: 1.6rem;
 		padding: 8px;
 		margin: 10px 0;
+	}
+
+	input:active,
+	input:focus {
+		outline: none;
 	}
 
 	#last {
