@@ -2,11 +2,11 @@
 	import Button from '../../../lib/components/Button.svelte';
 	import { page } from '$app/stores';
 	import { apiUrl } from '$lib/const.js';
+	import { tokenJwt } from '$lib/stores.js';
 
 	let item;
-	let person;
 	let amount;
-	let bids;
+	let bids = [];
 
 	console.log($page);
 	fetch(`${apiUrl}/listings/${$page.params.id}`)
@@ -16,12 +16,37 @@
 			console.log(item);
 		});
 
-	// fetch(`${apiUrl}/listings/bids/${item.id}`)
-	// 	.then((x) => x.json())
-	// 	.then((data) => {
-	// 		item = data;
-	// 		console.log(item);
-	// 	});
+	fetch(`${apiUrl}/listings/bids/${$page.params.id}`)
+		.then((x) => x.json())
+		.then((data) => {
+			bids = data;
+			console.log(bids);
+		});
+
+	async function Bid() {
+		let bidAmount = parseFloat(item.top_bid) + parseFloat(amount);
+
+		await fetch(`${apiUrl}/listings/bids/${$page.params.id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				"token": $tokenJwt
+			},
+			body: JSON.stringify({
+				bid: bidAmount
+			})
+		})
+			.then((x) => {
+				if (!x.ok) {
+					alert('bad');
+					return;
+				}
+				alert('good');
+			})
+			.catch((e) => {
+				alert('bad error');
+			});
+	}
 
 	// fetch(`${apiUrl}/users/${$page.params.owner_id}`)
 	// 	.then((x) => x.json())
@@ -37,12 +62,17 @@
 			<img src={item.image_link} alt="photo of product" />
 			<div>
 				<h3>{item.name}</h3>
-				<p>Current bind: {item.top_bid}$</p>
-				<p>
-					{item.top_bid}$ + <input type="number" placeholder="Amount" bind:value={amount} min="0" />
-					= {parseFloat(item.top_bid) + parseFloat(amount)}
-				</p>
-				<Button>Bet</Button>
+
+				{#if item.is_auction}
+					<p>Current bind: {item.top_bid}$</p>
+					<p>
+						{item.top_bid}$ +
+						<input type="number" placeholder="Amount" step="any" bind:value={amount} min="0" />
+						= {parseFloat(item.top_bid) + parseFloat(amount)}
+					</p>
+					<a on:click={Bid}><Button>Bet</Button></a>
+				{/if}
+
 				<p>Buy now price: {item.price} <Button inverse>Buy now</Button></p>
 				<!-- <p>Added by User</p> -->
 			</div>
@@ -51,9 +81,9 @@
 		<p class="desc">{item.description}</p>
 
 		<ul>
-			<!-- {#each bids as bid}
-				<li />
-			{/each} -->
+			{#each bids as bid}
+				{JSON.stringify(bid)}
+			{/each}
 		</ul>
 	{/if}
 </div>
