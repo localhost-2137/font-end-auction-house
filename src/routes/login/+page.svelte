@@ -36,10 +36,13 @@
 			setCookie("jwt", jwtData.token, 365);
 
 			window.location.reload();
+			tfa = "";
 		})
 		.catch((e) =>{
 			console.log(e);
 			alert("some error");
+
+			tfa = "";
 		});
 	}
 

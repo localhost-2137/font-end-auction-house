@@ -2,23 +2,24 @@
 	import { page } from '$app/stores';
 	import { apiUrl } from '$lib/const.js';
 
-	let items = [];
+	let item = {};
 
-	fetch(`${apiUrl}/users/${$page.params.id}`)
+	console.log($page);
+	fetch(`${apiUrl}/listings/${$page.params.id}`)
 		.then((x) => x.json())
 		.then((data) => {
-			items = data.data;
+			item = data;
 		});
 
-	console.log(items);
+	// console.log(items);
 </script>
 
 <div class="container">
 	<img src="" alt="" />
 	<div>
-		<h3>{items.name}</h3>
-		<p>Current bind: {items.top_bind}</p>
-		<p>{items.top_bind} + <input type="number" /></p>
+		<h3>{item.name}</h3>
+		<p>Current bind: {item.top_bind}</p>
+		<p>{item.top_bind} + <input type="number" /></p>
 	</div>
 </div>
 
