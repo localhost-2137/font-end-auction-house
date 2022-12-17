@@ -14,8 +14,6 @@
 				<input class="price-input" type="number" placeholder="Starting price" />
 			</div>
 			<div class="input-field">
-				<input type="checkbox" name="buy" id="buy" />
-				<label for="buy">Buy Now</label>
 				<input class="price-input" type="number" placeholder="Buy now price" />
 			</div>
 			<textarea name="desc" id="desc" cols="30" rows="10" placeholder="Add description..." />

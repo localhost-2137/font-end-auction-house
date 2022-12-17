@@ -22,16 +22,24 @@
 		});
 </script>
 
-<Sidebar />
-
-<div class="container">
-	{#each items as item}
-		<Item product={item} />
-	{/each}
+<div class="content">
+	<Sidebar />
+	<div class="container">
+		{#each items as item}
+			<Item product={item} />
+		{/each}
+	</div>
 </div>
 
 <style>
 	.container {
-		width: 100%;
+		height: 100vh;
+		width: 80%;
+		overflow-y: scroll;
+	}
+
+	.content {
+		display: flex;
+		justify-content: space-between;
 	}
 </style>
