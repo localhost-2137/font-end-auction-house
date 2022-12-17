@@ -82,48 +82,6 @@
 				/>
 			</div>
 		</div>
-		<div class="input-field">
-			<label>Sell type</label>
-			<div class="radio-option">
-				<input
-					type="radio"
-					name="sell-type"
-					id="buy"
-					bind:value={filters.buyNow}
-					on:input={() => {
-						dispatcher('handleFilters', filters);
-					}}
-				/>
-				<label for="buy">Buy Now</label>
-			</div>
-
-			<div class="radio-option">
-				<input
-					type="radio"
-					name="sell-type"
-					id="auction"
-					bind:value={filters.auction}
-					on:input={() => {
-						dispatcher('handleFilters', filters);
-					}}
-				/>
-				<label for="auction">Auction</label>
-			</div>
-		</div>
-		<div class="input-field">
-			<label for="category">Category</label>
-			<select
-				id="category"
-				bind:value={filters.cat}
-				on:input={() => {
-					dispatcher('handleFilters', filters);
-				}}
-			>
-				<option selected value="-1">None</option>
-				<option value="1">Music</option>
-				<option value="2">AGD</option>
-			</select>
-		</div>
 	</form>
 </div>
 
