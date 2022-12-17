@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte/internal';
+	import Button from './Button.svelte';
 
 	let dispatcher = createEventDispatcher();
 	let filters = {
@@ -26,7 +27,7 @@
 				id="search"
 				placeholder="Search"
 				bind:value={filters.search}
-				on:change|preventDefault={() => {
+				on:input={() => {
 					dispatcher('handleFilters', filters);
 				}}
 			/>
@@ -38,17 +39,19 @@
 					type="number"
 					id="buy-min-value"
 					placeholder="min"
+					min="0"
 					bind:value={filters.minPrice}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
 				<input
 					type="number"
+					min="0"
 					id="buy-max-value"
 					placeholder="max"
 					bind:value={filters.maxPrice}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
@@ -59,19 +62,21 @@
 			<div class="double-input">
 				<input
 					type="number"
+					min="0"
 					id="bid-min-value"
 					placeholder="min"
 					bind:value={filters.minBet}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
 				<input
 					type="number"
+					min="0"
 					id="bid-max-value"
 					placeholder="max"
 					bind:value={filters.maxBet}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
@@ -97,7 +102,7 @@
 					name="sell-type"
 					id="buy"
 					bind:value={filters.buyNow}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
@@ -110,7 +115,7 @@
 					name="sell-type"
 					id="auction"
 					bind:value={filters.auction}
-					on:change|preventDefault={() => {
+					on:input={() => {
 						dispatcher('handleFilters', filters);
 					}}
 				/>
@@ -122,7 +127,7 @@
 			<select
 				id="category"
 				bind:value={filters.cat}
-				on:change|preventDefault={() => {
+				on:input={() => {
 					dispatcher('handleFilters', filters);
 				}}
 			>

@@ -27,6 +27,18 @@
 	const handleFilters = (e) => {
 		const filters = e.detail;
 
+		if (
+			filters.search === '' ||
+			filters.minPrice === 0 ||
+			filters.maxPrice === 0 ||
+			filters.minBet === 0 ||
+			filters.maxBet === 0 ||
+			filters.buyNow === false ||
+			filters.auction === false ||
+			filters.cat === -1
+		) {
+			filtredItems = items;
+		}
 		if (filters.search) {
 			const length = filters.search.toString().length;
 			const name = filters.search;
@@ -62,11 +74,11 @@
 		// }
 
 		if (filters.buyNow) {
-			filtredItems = items.filter((item) => item.is_auction == false);
+			filtredItems = items.filter((item) => item.is_auction != filters.is_auction);
 		}
 
 		if (filters.auction) {
-			filtredItems = items.filter((item) => item.is_auction == true);
+			filtredItems = items.filter((item) => item.is_auction == filters.is_auction);
 		}
 
 		if (filters.cat != -1) {
@@ -81,6 +93,7 @@
 
 <div class="flex">
 	<Sidebar on:handleFilters={handleFilters} />
+
 	<div class="container">
 		{#each filtredItems as item}
 			<Item product={item} />
