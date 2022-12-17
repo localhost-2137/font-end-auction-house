@@ -144,7 +144,6 @@
 	}
 
 	.details {
-		width: 100%;
 		font-size: 14px;
 		text-decoration: none;
 	}
