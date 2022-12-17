@@ -99,13 +99,6 @@
 	}
 </script>
 
-{#if qrCodeUrl.length > 0}
-  <div style="width:50%; height: 50%; position: absolute; transform: translate(-50%, -50%); right: 50%; top: 50%">
-    <img width="100%" height="100%" src={qrCodeUrl}>
-  </div>
-  <button on:click={() => (qrCodeUrl = "")}>CLOSE</button>
-{/if}
-
 <div class={firstPart ? 'container' : 'hide'}>
 	<div>
 		<form>
@@ -116,7 +109,10 @@
 				<input type="email" bind:value={email} placeholder="Email" />
 				<input type="password" bind:value={password} placeholder="Password" />
 				<input type="password" bind:value={confirmPassword} placeholder="Repeat Password" />
-				<input type="checkbox" bind:value={tfaSelected} placeholder="2fa" />
+				<div>
+					<input type="checkbox" bind:value={tfaSelected} placeholder="2fa" id="checkbox"/>
+					<label for="checkbox">I want 2 step veryfication</label>
+				</div>
 			</div>
 			<div class="buttons">
 				<a href="../register" on:click={hide}><Button full>Next</Button></a>
@@ -141,10 +137,70 @@
 	</div>
 	<img src="/graphics/register2.svg" alt="userPhoto" />
 </div>
+{#if qrCodeUrl.length > 0}
+  <div class="qr">
+	<p>Use google authentificator and scan this code for 2 step veryfication!</p>
+    <img width="100%" height="100%" src={qrCodeUrl}>
+	<button on:click={() => (qrCodeUrl = "")} class="primary">CLOSE</button>
+</div>
+{/if}
 
 <style>
+	.qr {
+		color: white;
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 24px;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	.qr > img {
+		width: 300px;
+		height: 300px;
+	} 
+
+	button {
+        appearance: none;
+        padding: 8px 12px;
+        font-size: 1.4rem;
+        border-radius: 4px;
+        min-width: 300px;
+        outline: none;
+        cursor: pointer;
+    }
+
+	.primary {
+		color: #fff;
+		border: 1px solid var(--acc-500);
+		background-color: var(--acc-500);
+	}
+
 	.hide {
 		display: none;
+	}
+
+	.inputs > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#checkbox {
+		width: 25px;
+		height: 25px;
+		appearance: none;
+		background-color: var(--acc-300);
+	}
+
+	#checkbox:checked {
+		background-color: var(--acc-500);
 	}
 
 	.container {
@@ -201,10 +257,5 @@
 		border-radius: 4px;
 		font-size: 1.6rem;
 		padding: 8px;
-	}
-
-	img {
-		width: 500px;
-		object-fit: cover;
 	}
 </style>
