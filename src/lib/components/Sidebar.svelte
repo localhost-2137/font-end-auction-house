@@ -82,18 +82,6 @@
 				/>
 			</div>
 		</div>
-		<!-- <div class="input-field">
-			<label for="time">Time left</label>
-			<input
-				type="text"
-				id="time"
-				placeholder="Max"
-				bind:value={filters.time}
-				on:change|preventDefault={() => {
-					dispatcher('handleFilters', filters);
-				}}
-			/>
-		</div> -->
 		<div class="input-field">
 			<label>Sell type</label>
 			<div class="radio-option">

@@ -1,1 +1,1 @@
-export const apiUrl = "http://172.16.15.202:3000";
+export const apiUrl = 'https://usbus/api';

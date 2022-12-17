@@ -30,7 +30,7 @@
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
-				"token": $tokenJwt
+				token: $tokenJwt
 			},
 			body: JSON.stringify({
 				bid: bidAmount
@@ -80,9 +80,16 @@
 
 		<p class="desc">{item.description}</p>
 
-		<ul>
+		<ul class="bid-list">
+			<li>
+				<p>Price</p>
+				<p>Date</p>
+			</li>
 			{#each bids as bid}
-				{JSON.stringify(bid)}
+				<li>
+					<p>{bid.price}</p>
+					<p>{new Date(bid.big_date * 1000).toLocaleString()}</p>
+				</li>
 			{/each}
 		</ul>
 	{/if}
@@ -132,5 +139,16 @@
 	input:focus,
 	input:active {
 		outline: none;
+	}
+
+	.bid-list {
+		list-style: none;
+	}
+
+	.bid-list li {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 10px 15px;
 	}
 </style>

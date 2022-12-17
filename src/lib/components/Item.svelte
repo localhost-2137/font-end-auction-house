@@ -53,13 +53,12 @@
 
 		<div class={!product.is_auction ? 'hidden' : 'row'}>
 			<p>Current bid: {product.top_bid}$</p>
-			<Button>Bid</Button>
+			<a class="details" href="/product/{product.id}"><Button>Bid</Button></a>
 		</div>
 		<div class="row">
 			<p>Buy now price: {product.price}$</p>
-			<Button inverse>Buy</Button>
+			<a class="details" href="/product/{product.id}"><Button inverse>Buy</Button></a>
 		</div>
-		<a class="details" href="/product/{product.id}">Details</a>
 		{#if $user && product.username == $user.data.username}
 			<div class="row">
 				<p>Remove</p>
@@ -98,14 +97,14 @@
 		position: relative;
 	}
 
-	.container::after{
-		content: "";
-        width: 80%;
-        height: 1px;
-        background-color: #BFB7B5;
-        position: absolute;
-        bottom: -5%;
-        left: 10%;
+	.container::after {
+		content: '';
+		width: 80%;
+		height: 1px;
+		background-color: #bfb7b5;
+		position: absolute;
+		bottom: -5%;
+		left: 10%;
 	}
 
 	.container p {
