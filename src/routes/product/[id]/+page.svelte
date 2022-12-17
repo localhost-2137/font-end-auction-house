@@ -88,7 +88,7 @@
 			{#each bids as bid}
 				<li>
 					<p>{bid.price}</p>
-					<p>{new Date(bid.big_date * 1000).toLocaleString()}</p>
+					<p>{new Date(bid.bid_date * 1000).toLocaleString()}</p>
 				</li>
 			{/each}
 		</ul>

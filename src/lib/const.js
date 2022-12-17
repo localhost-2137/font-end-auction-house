@@ -1,1 +1,1 @@
-export const apiUrl = 'https://usbus/api';
+export const apiUrl = 'https://usbus.space/api';
