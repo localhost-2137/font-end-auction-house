@@ -151,4 +151,8 @@
 		align-items: center;
 		margin: 10px 15px;
 	}
+
+	.bid-list p {
+		margin: 0 10px;
+	}
 </style>
