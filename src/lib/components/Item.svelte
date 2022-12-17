@@ -18,22 +18,26 @@
 	};
 </script>
 
-<div class="container">
-	<img src="/graphics/Businessman 4.png" alt="" />
-	<div class="desc">
-		<h3>{product.name}</h3>
+<a href="/product">
+	<div class="container">
+		<img src="/graphics/Businessman 4.png" alt="" />
+		<div class="desc">
+			<h3>{product.name}</h3>
 
-		<div class={!product.is_auction ? 'hidden' : 'row'}>
-			<p>Current bid: {product.top_bid}$</p>
-			<Button>Bid</Button>
+			<div class={!product.is_auction ? 'hidden' : 'row'}>
+				<p>Current bid: {product.top_bid}$</p>
+				<Button>Bid</Button>
+			</div>
+			<div class="row">
+				<p>Buy now price: {product.price}$</p>
+				<Button inverse>Buy</Button>
+			</div>
+			<p class="author">
+				Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a>
+			</p>
 		</div>
-		<div class="row">
-			<p>Buy now price: {product.price}$</p>
-			<Button inverse>Buy</Button>
-		</div>
-		<p class="author">Added by <a class="primary" href={`/profile/${product.username}`}>{product.username}</a></p>
 	</div>
-</div>
+</a>
 
 <style>
 	.hidden {

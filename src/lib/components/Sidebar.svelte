@@ -131,7 +131,7 @@
 					dispatcher('handleFilters', filters);
 				}}
 			>
-				<option default value="-1">None</option>
+				<option selected value="-1">None</option>
 				<option value="1">Music</option>
 				<option value="2">AGD</option>
 			</select>
@@ -185,7 +185,9 @@
 	}
 
 	input:focus,
-	input:active {
+	input:active,
+	select:focus,
+	select:active {
 		outline: none;
 	}
 

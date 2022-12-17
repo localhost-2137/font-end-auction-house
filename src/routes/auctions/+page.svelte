@@ -35,7 +35,7 @@
 			filters.maxBet === 0 ||
 			filters.buyNow === false ||
 			filters.auction === false ||
-			filters.cat === -1
+			filters.cat == -1
 		) {
 			filtredItems = items;
 		}
@@ -108,7 +108,8 @@
 	}
 
 	.container {
-		height: 100vh;
+		max-height: 100%;
+		overflow-y: auto;
 		width: 80%;
 	}
 </style>
