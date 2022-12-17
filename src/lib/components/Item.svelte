@@ -59,6 +59,7 @@
 			<p>Buy now price: {product.price}$</p>
 			<Button inverse>Buy</Button>
 		</div>
+		<a class="details" href="/product/{product.id}">Details</a>
 		{#if $user && product.username == $user.data.username}
 			<div class="row">
 				<p>Remove</p>
