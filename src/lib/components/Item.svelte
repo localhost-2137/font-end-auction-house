@@ -44,6 +44,30 @@
 				alert(`ERROR ${e}`);
 			});
 	}
+
+	async function Buy() {
+		await fetch(`${apiUrl}/listings/buy`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				token: $tokenJwt
+			},
+			body: JSON.stringify({
+				listingId: product.id
+			})
+		})
+			.then((x) => {
+				if (!x.ok) {
+					alert('CANNOT BUY');
+					return;
+				}
+
+				window.location.reload();
+			})
+			.catch((e) => {
+				alert(`ERROR ${e}`);
+			});
+	}
 </script>
 
 <div class="container">
@@ -53,11 +77,11 @@
 
 		<div class={!product.is_auction ? 'hidden' : 'row'}>
 			<p>Current bid: {product.top_bid}$</p>
-			<a class="details" href="/product/{product.id}"><Button>Bid</Button></a>
+			<a on:click={Buy}><Button>Bid</Button></a>
 		</div>
 		<div class="row">
 			<p>Buy now price: {product.price}$</p>
-			<a class="details" href="/product/{product.id}"><Button inverse>Buy</Button></a>
+			<Button inverse>Buy</Button>
 		</div>
 		{#if $user && product.username == $user.data.username}
 			<div class="row">
@@ -94,17 +118,6 @@
 		align-items: center;
 		gap: 32px;
 		margin-bottom: 100px;
-		position: relative;
-	}
-
-	.container::after {
-		content: '';
-		width: 80%;
-		height: 1px;
-		background-color: #bfb7b5;
-		position: absolute;
-		bottom: -5%;
-		left: 10%;
 	}
 
 	.container p {
@@ -144,6 +157,7 @@
 	}
 
 	.details {
+		width: 100%;
 		font-size: 14px;
 		text-decoration: none;
 	}
