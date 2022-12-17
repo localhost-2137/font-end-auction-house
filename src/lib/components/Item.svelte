@@ -47,7 +47,7 @@
 
 	async function Buy() {
 		await fetch(`${apiUrl}/listings/buy`, {
-			method: 'DELETE',
+			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				token: $tokenJwt
@@ -77,11 +77,11 @@
 
 		<div class={!product.is_auction ? 'hidden' : 'row'}>
 			<p>Current bid: {product.top_bid}$</p>
-			<a on:click={Buy}><Button>Bid</Button></a>
+			<!-- <a href><Button>Bid</Button></a> -->
 		</div>
 		<div class="row">
 			<p>Buy now price: {product.price}$</p>
-			<Button inverse>Buy</Button>
+			< on:click={Buy}><Button inverse>Buy</Button></a>
 		</div>
 		{#if $user && product.username == $user.data.username}
 			<div class="row">
