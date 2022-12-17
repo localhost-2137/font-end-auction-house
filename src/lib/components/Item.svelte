@@ -9,7 +9,7 @@
 </script>
 
 <div class="container">
-	<img src="/public/headpones.svg" alt="" />
+	<img src="/graphics/Businessman 4.png" alt="" />
 	<div class="desc">
 		<h3>{product.name}</h3>
 			<div class="row">
@@ -73,7 +73,7 @@
 
 	.author {
 		width: 100%;
-		font-size: 12px;
+		font-size: 16px;
 	}
 
 	.primary {

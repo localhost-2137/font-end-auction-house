@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="profile">
 		<div class="photo">
-			<img src="/public/profile.svg" alt="" />
+			<img src="/graphics/Businessman 4.png" alt="" />
 		</div>
 		<div class="desc">
 			<h2>Username</h2>
@@ -14,9 +14,6 @@
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae numquam ut, earum alias
 				porro veniam pariatur! Magnam ipsam distinctio voluptas.
 			</p>
-			<div class="btn">
-				<Button inverse>Change user data</Button>
-			</div>
 		</div>
 	</div>
 	<div class="offer">
@@ -39,7 +36,7 @@
 
     .desc {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-direction: column;
         padding: 32px 0;
     }
@@ -57,7 +54,7 @@
 	}
 
 	p {
-		font-size: 14px;
+		font-size: 24px;
 		margin-bottom: 25px;
 	}
 
